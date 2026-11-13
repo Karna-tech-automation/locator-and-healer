@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Locator and Healer</title>
+    <link rel="stylesheet" href="./panel.css" />
+  </head>
+  <body>
+    <main>
+      <header style="display: flex; justify-content: space-between; align-items: center;">
+        <h1>Locator Studio</h1>
+      </header>
+
+      <div class="tabs">
+        <button id="tab-finder" class="tab-btn active">🎯 Finder</button>
+        <button id="tab-recorder" class="tab-btn">⏺ Recorder</button>
+      </div>
+
+      <!-- FINDER VIEW -->
+      <div id="view-finder">
+        <button id="pick-btn" class="primary-btn">🎯 Pick Element</button>
+        <section id="results-section" style="display: none; margin-top: 16px;">
+          <h2>Locators</h2>
+          <div id="locator-list" class="card-list"></div>
+        </section>
+      </div>
+
+      <!-- RECORDER VIEW -->
+      <div id="view-recorder" style="display: none;">
+        <button id="record-btn" class="primary-btn">⏺ Start Recording</button>
+        
+        <label style="display: flex; align-items: center; gap: 8px; margin-top: 12px; cursor: pointer; font-weight: bold; color: var(--warning);">
+          <input type="checkbox" id="assert-toggle" style="width: auto;" />
+          Assertion Mode (Click element to assert)
+        </label>
+
+        <!-- 1. RAW TEST FILE -->
+        <div class="code-box-container">
+          <h2>Raw Test File (Standalone)</h2>
+          <textarea id="raw-test-code" readonly spellcheck="false"></textarea>
+          <button id="copy-raw-test-btn" class="export-btn">Copy Raw Code</button>
+        </div>
+
+        <!-- 2. POM TEST FILE -->
+        <div class="code-box-container">
+          <h2>Framework Test File (Uses POM)</h2>
+          <textarea id="test-code" readonly spellcheck="false"></textarea>
+          <button id="copy-test-btn" class="export-btn">Copy Test Code</button>
+        </div>
+
+        <!-- 3. PAGE OBJECT FILE -->
+        <div class="code-box-container">
+          <h2>Page Object (.js)</h2>
+          <textarea id="page-code" readonly spellcheck="false"></textarea>
+          <button id="copy-page-btn" class="export-btn">Copy Page Code</button>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- ASSERTION MODAL -->
+    <div id="assertion-modal" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+        <h3>What do you want to assert?</h3>
+        <div class="modal-buttons">
+          <button id="assert-visible-btn" class="assert-choice-btn">Is Visible</button>
+          <button id="assert-enabled-btn" class="assert-choice-btn">Is Enabled</button>
+          <button id="assert-text-btn" class="assert-choice-btn">Has Text</button>
+          <button id="assert-value-btn" class="assert-choice-btn">Has Value</button>
+        </div>
+        <button id="assert-cancel-btn" style="margin-top: 12px; background: transparent; border: none; color: #888; cursor: pointer; width: 100%;">Cancel</button>
+      </div>
+    </div>
+
+    <script type="module" src="./panel.js"></script>
+  </body>
+</html>
